@@ -87,7 +87,6 @@ public class Clients {
 		@Override
 		public String toString() {
 			return "\n"
-					+ "Les informations d'un client sont: \n"
 					+ "Numero Client: " + idClient + " \n"
 					+ "Nom Client: " + nomClient + " \n"
 					+ "Nombre Compte=" + qteCompte + "";

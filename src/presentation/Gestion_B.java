@@ -76,7 +76,7 @@ public class Gestion_B {
 								int tempCompte = cpte_tenu.getIdCompte();
 								if (tempCompte == cpid)
 								{
-									System.out.println("Ce compte exsite: ");
+									System.err.println("Ce compte exsite: ");
 									trouver = true;
 									while(cpid<=0)
 									{
@@ -90,50 +90,50 @@ public class Gestion_B {
 							{
 								
 							System.out.println("Numero du client - NB: Un entier positif");
-						int clid = lecture.nextInt();
-						while(clid<=0)
-						{
-							System.err.println("Numero du client - NB: Un entier positif");
-							clid = lecture.nextInt();
-						}
-						System.out.println("Client nom");
-						String clnom = lecture.next();
-						System.out.println("Solde compte - NB: Un nombre positif");
-						double cpsolde = lecture.nextDouble();
-						while(cpsolde<=0)
-						{
-							System.err.println("Solde compte - NB: Un nombre positif");
-							cpsolde = lecture.nextDouble();
-						}
-						System.out.println("Type du compte NB: Epargne ou Courant");
-						String typeCpte = lecture.next();
-						System.out.println("Taux du compte - NB: un decimal superieur a 0 et inferieur a 1");
-						taux = lecture.nextDouble();
-						while((taux<=0)||(taux>=1))
-						{
-							System.err.println("Taux du compte - NB: un decimal superieur a 0 et inferieur a 1");
-							taux = lecture.nextDouble();
-						}
-						Date dc = new Date();
-						cpte= new Comptes(cpid,clid,clnom,cpsolde,taux,dc,typeCpte);
-						cl = new Clients(cpte.getIdClient(),cpte.getNomClient(),1);
-						typeTrans = "Depot";
-						montantTrans = cpsolde;
-						numTrans = listeTransaction.size()+1;
-						listeCpte.add(cpte);
-						solde_avant_t = 0.0;
-						solde_apres_t = montantTrans;
-						Transactions trans = new Transactions(numTrans, cpte.getIdClient(), cpte.getIdCompte(), dateTrans, typeTrans,montantTrans,solde_avant_t,solde_apres_t);
-						listeTransaction.add(trans);
-						
-						
-						for (int x=0; x<listeCpte.size(); x++)
+							int clid = lecture.nextInt();
+							while(clid<=0)
 							{
-								System.out.println(listeCpte.get(x).toString());
-								System.out.println("");
-								System.out.println(listeTransaction.get(x).toString());
-								System.out.println("");
+								System.err.println("Numero du client - NB: Un entier positif");
+								clid = lecture.nextInt();
 							}
+							System.out.println("Client nom");
+							String clnom = lecture.next();
+							System.out.println("Solde compte - NB: Un nombre positif");
+							double cpsolde = lecture.nextDouble();
+							while(cpsolde<=0)
+							{
+								System.err.println("Solde compte - NB: Un nombre positif");
+								cpsolde = lecture.nextDouble();
+							}
+							System.out.println("Type du compte NB: Epargne ou Courant");
+							String typeCpte = lecture.next();
+							System.out.println("Taux du compte - NB: un decimal superieur a 0 et inferieur a 1");
+							taux = lecture.nextDouble();
+							while((taux<=0)||(taux>=1))
+							{
+								System.err.println("Taux du compte - NB: un decimal superieur a 0 et inferieur a 1");
+								taux = lecture.nextDouble();
+							}
+							Date dc = new Date();
+							cpte= new Comptes(cpid,clid,clnom,cpsolde,taux,dc,typeCpte);
+							cl = new Clients(cpte.getIdClient(),cpte.getNomClient(),1);
+							typeTrans = "Depot";
+							montantTrans = cpsolde;
+							numTrans = listeTransaction.size()+1;
+							listeCpte.add(cpte);
+							solde_avant_t = 0.0;
+							solde_apres_t = montantTrans;
+							Transactions trans = new Transactions(numTrans, cpte.getIdClient(), cpte.getIdCompte(), dateTrans, typeTrans,montantTrans,solde_avant_t,solde_apres_t);
+							listeTransaction.add(trans);
+							
+							System.out.println("\n")
+							System.out.println("Compte: ");
+									
+							for (int x=0; x<listeCpte.size(); x++)
+								{
+									System.out.println(listeCpte.get(x).toString());
+									System.out.println("");
+								}
 							}
 					}
 					catch(Exception e)
@@ -307,12 +307,54 @@ public class Gestion_B {
 						}
 					break;
 					
+					
 				case 'e':
 				case 'E':
-					//cl.getQteCompte();
-					System.out.println("\n" +cl.getQteCompte());
-					break;
 					
+				try
+				{
+					System.out.println("Entrez le numero du client :");
+					int idClient = lecture.nextInt();
+					while (idClient <= 0)
+					{
+						System.err.println("le numero du client - NB: Un entier positif");
+						idClient = lecture.nextInt();
+					}
+					if (listeCpte.isEmpty())
+					{
+						System.err.println("Presentement, la banque n'a pas de compte pour ce client.");
+					}
+
+					else
+					{
+						boolean trouver = false;
+						int i = 0;
+						for (Comptes cpte_tenu : listeCpte)
+						{
+							int tempCompte = cpte_tenu.getIdClient();
+							if (tempCompte == idClient) 
+							{
+								++i;
+								trouver = true;
+							}
+						}
+						System.err.println("Nombre de Compte: "+i);
+			
+						if (trouver == false)
+						{
+							System.err.println("Ce client n'existe pas.");
+
+						}
+					}
+				}
+				
+				catch (Exception e)
+				{
+					System.out.println(e.toString());
+				}
+
+				break;
+						
 				case 'f':
 				case 'F':
 						try
@@ -366,6 +408,12 @@ public class Gestion_B {
 						}
 					break;
 					
+				case 'i':
+				case 'I':
+					System.out.println("Merci de votre fidelite a notre banque, aurevoir !" + "");
+					System.exit(0);
+					break;
+					
 				default:
 					System.out.println("************************************");
 					System.out.println("Cette option n'est pas valibe, choisissez une option valide");
@@ -375,11 +423,7 @@ public class Gestion_B {
 		}
 		
 		while(choix != 'I');
-		{
-			System.out.println("Merci de votre fidelite a notre banque, aurevoir !"
-					+ "");
-		}
-		
+			
 		lecture.close();
 	}
 	

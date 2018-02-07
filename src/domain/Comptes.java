@@ -137,8 +137,6 @@ public class Comptes {
 		return typeCompte;
 	}
 
-	
-	
 	// Methode de creation d'un compte
 	
 	public Comptes creerCompte(Comptes c){
@@ -163,19 +161,6 @@ public class Comptes {
 			System.out.println("Presentement, le solde de votre compte est: " +soldeCompte);
 		}
 		
-		// Methode permettant de calculer l'interet
-		
-		public void calculInteret(){
-			if(soldeCompte <= 100)
-			{
-				soldeCompte = soldeCompte + (soldeCompte*taux);
-			}
-			else
-			{
-				soldeCompte = soldeCompte + (soldeCompte*taux);
-			}
-		}
-		
 		// Methode permettant de recherche la quantite compte d'un client
 		
 		public void rechercherQteCompte(Integer idClient){
@@ -189,7 +174,6 @@ public class Comptes {
 		@Override
 		public String toString() {
 			return "\n"
-					+ "Les caracteristiques du compte sont: \n"
 					+ "Numero du compte: " + idCompte + " \n"
 					+ "Numero du titulaire: " + idClient + " \n"
 					+ "Nom du titulaire: " + nomClient+ " \n"
