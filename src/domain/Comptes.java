@@ -161,13 +161,6 @@ public class Comptes {
 			System.out.println("Presentement, le solde de votre compte est: " +soldeCompte);
 		}
 		
-		// Methode permettant de recherche la quantite compte d'un client
-		
-		public void rechercherQteCompte(Integer idClient){
-			Clients cli = new Clients();
-			System.out.println("Presentement vous avez: " +cli.getQteCompte()+ " comptes");
-		}
-		
 		/* (non-Javadoc)
 		 * @see java.lang.Object#toString()
 		 */

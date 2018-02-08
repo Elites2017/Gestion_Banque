@@ -6,8 +6,6 @@ public class Clients {
 	
 	private Integer idClient;
 	private String nomClient;
-	private Integer qteCompte;
-	
 	
 	// Constructeur sans paremtre
 	
@@ -28,7 +26,7 @@ public class Clients {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
-		this.qteCompte = qteCompte;
+		
 	}
 
 	// Accesseurs et modificateurs
@@ -61,20 +59,6 @@ public class Clients {
 		this.nomClient = nomClient;
 	}
 
-	/**
-	 * @return the qteCompte
-	 */
-	public int getQteCompte() {
-		return qteCompte;
-	}
-
-	/**
-	 * @param qteCompte the qteCompte to set
-	 */
-	public void setQteCompte(Integer qteCompte) {
-		this.qteCompte = qteCompte;
-	}
-	
 	// Methode de creation d'un client
 	
 		public Clients creerClient(Clients cl){
@@ -89,6 +73,6 @@ public class Clients {
 			return "\n"
 					+ "Numero Client: " + idClient + " \n"
 					+ "Nom Client: " + nomClient + " \n"
-					+ "Nombre Compte=" + qteCompte + "";
+					;
 		}
 }
