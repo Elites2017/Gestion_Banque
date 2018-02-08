@@ -1,6 +1,4 @@
 package presentation;
-//import presentation.Gestion_B;
-//import java.util.Scanner;
 
 public class Banque {
 
